@@ -540,10 +540,10 @@ def controlsd_thread(sm=None, pm=None, can_sock=None):
     prof.checkpoint("Sample")
 
     # Create alerts
-    if not sm.alive['plan'] and sm.alive['pathPlan']:  # only plan not being received: radar not communicating
-      events.append(create_event('radarCommIssue', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
-    elif not sm.all_alive_and_valid():
-      events.append(create_event('commIssue', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
+#    if not sm.alive['plan'] and sm.alive['pathPlan']:  # only plan not being received: radar not communicating
+#      events.append(create_event('radarCommIssue', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
+#    elif not sm.all_alive_and_valid():
+#      events.append(create_event('commIssue', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
     if not sm['pathPlan'].mpcSolutionValid:
       events.append(create_event('plannerError', [ET.NO_ENTRY, ET.IMMEDIATE_DISABLE]))
     if not sm['pathPlan'].sensorValid:
@@ -552,10 +552,10 @@ def controlsd_thread(sm=None, pm=None, can_sock=None):
       events.append(create_event('vehicleModelInvalid', [ET.WARNING]))
     if not sm['pathPlan'].posenetValid:
       events.append(create_event('posenetInvalid', [ET.NO_ENTRY, ET.WARNING]))
-    if not sm['plan'].radarValid:
-      events.append(create_event('radarFault', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
-    if sm['plan'].radarCanError:
-      events.append(create_event('radarCanError', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
+#    if not sm['plan'].radarValid:
+#      events.append(create_event('radarFault', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
+#    if sm['plan'].radarCanError:
+#      events.append(create_event('radarCanError', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
     if not CS.canValid:
       events.append(create_event('canError', [ET.NO_ENTRY, ET.IMMEDIATE_DISABLE]))
     if not sounds_available:
